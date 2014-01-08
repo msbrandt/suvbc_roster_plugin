@@ -20,8 +20,11 @@ require_once( plugin_dir_path( __FILE__ ) . 'SUVBC_Roster_class.php' );
 
 register_deactivation_hook( __FILE__, array( 'SUVBC_ROSTER', 'deactivate' ) );
 include( 'views/public.php' );
+// require_once( plugin_dir_path( __FILE__ ) . 'roster_admin.php' );
+
 
 SUVBC_ROSTER::get_instance();
 
 register_activation_hook( __FILE__, array( SUVBC_ROSTER, 'SUVBC_roster_install' ) );
+
 ?>

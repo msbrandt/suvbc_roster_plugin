@@ -66,6 +66,7 @@ class SUVBC_ROSTER {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_stylesX') );
 
 		add_action( 'admin_init', array( $this, 'SUVBC_settings' ) );
+		add_action( 'wp_ajax_save_player', array( $this, 'save_player_handler') );
 
 	}
 	/**
@@ -196,7 +197,7 @@ class SUVBC_ROSTER {
 	public function SUVBC_roster_install(){
 		global $wpdb;
 
-		$table_name = $wpdb->prefix . 'Roster';
+		$table_name = $wpdb->prefix . 'suvbc_Roster';
 		
 		$sql = "CREATE TABLE " . $table_name . "(
 			player_number int(3) NOT NULL,
@@ -204,32 +205,12 @@ class SUVBC_ROSTER {
 			player_position varchar(2) NOT NULL,
 			player_year varchar(2) NOT NULL,
 			player_hometown tinytext NOT NULL,
+			player_img tinytext NOT NULL,
+			player_bio varchar(500) NOT NULL,
 			PRIMARY KEY  player_number (player_number)
 			);";
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
-
-		$wpdb->insert(
-			$table_name, 
-			array(
-				'player_number' 	=> '18',
-				'player_name'		=> 'Name',
-				'player_position' 	=> 'Po',
-				'player_year'		=> 'Cl',
-				'player_hometown'	=> 'Hometown'
-				), 
-			array(
-					'%d',
-					'%s',
-					'%s',
-					'%s',
-					'%s'
-				)
-			);
-
-
-		}
-
-
+	}
 }
 ?>
