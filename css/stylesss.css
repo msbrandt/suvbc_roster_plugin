@@ -1,0 +1,24 @@
+.admin_input{
+	display: block;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+textarea{
+	padding: 10px;
+}
+.display_admin_table{
+	float: left;
+	margin-left: 100px;
+}
+table th{
+	padding-right: 50px;
+	/*border-right: 1px solid #000;*/
+	border-bottom: 1px solid #000;
+	/*border-left: 1px solid #000;*/
+}
+table td{
+}
+form{
+	float: left;
+}
+
